@@ -1,0 +1,27 @@
+.player{
+  height: 45%;
+  width: 100%;
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  background-color: #5E0A12;
+  color: #fff;
+}
+.current{
+  background-color: #C42B22;
+  background-color: #bd261f;
+}
+.player > div {
+  /* border: black 2px solid; */
+}
+.player-img{
+  height: 55%;
+  text-align: center;
+}
+.player-img img{
+  height: 100%;
+}
+.player-name, .score{
+  height: 15%;
+  text-align: center;
+  font-size: 1.3rem;
+}
