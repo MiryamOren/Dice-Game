@@ -23,8 +23,6 @@ constructor(props){
 	this.roll = this.roll.bind(this) 
 } 
 roll(){ 
-	console.log('---rolling---');
-	console.log(this.props.computerTurn);
 	const {sides} = this.props 
 	this.setState({ 
 	// Changing state upon click 

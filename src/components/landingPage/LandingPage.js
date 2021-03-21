@@ -63,7 +63,6 @@ class LandingPage extends React.Component {
     }
   }
   render(){
-    console.log(this.state.display);
     return (
       <div className="landing-page">
       {(this.state.display === 'GoalScore') &&

@@ -24,7 +24,6 @@ class Game extends React.Component {
     computerTurn={this.state[this.state.currentPlayer].name === 'Computer'}/>
   }
   componentDidUpdate(){
-    console.log(this.state);
     if (this.state.player2.name === 'Computer' && 
     this.state.currentPlayer === 'player2'){
       if ((this.state.player2.currentScore +
@@ -37,7 +36,6 @@ class Game extends React.Component {
     }
   }
   computerTurn(){
-    console.log('---computerTurn---');
     setTimeout(() => {
       this.child.current.roll();
     }, 1500);
@@ -92,7 +90,6 @@ class Game extends React.Component {
     }
   }
   holdHandler(){
-    console.log('---holdHandler---')
     const prev = this.state;
     const currentPlayer = prev.currentPlayer;
     const anotherPlayer = prev.currentPlayer === 'player1' ? 'player2' : 'player1'
@@ -118,7 +115,6 @@ class Game extends React.Component {
   }
 
   newGameHandler(){
-    console.log('newGameHandler');
     this.setState({
       gameEnd : false,
       currentPlayer : 'player1',

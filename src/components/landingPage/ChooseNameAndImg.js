@@ -38,12 +38,15 @@ const ChooseNameAndImg = (props) => {
         })}
       </div>
       <button onClick={() => {
-        console.log(obj);
+        obj.name = document.querySelector('input').value;
         props.func(props.playerNum, obj);
+        document.querySelector('input').value = `Player 2`;
+        obj.img = imgs[0];
+        console.log(obj);
+        document.querySelectorAll('img').forEach((img, indx) => {
+          indx === 0? img.classList.add('checked') : img.classList.remove('checked');
+        });
       }}>Continue</button>
-    <div>
-    </div>
-    
     </div>
   )
 }
