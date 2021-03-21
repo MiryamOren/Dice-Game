@@ -10,6 +10,7 @@ class Game extends React.Component {
     super(props);
     this.props = props;
     this.winningScore = props.winningScore;
+    this.child = React.createRef();
 
     this.state = {
       gameEnd : false,
@@ -17,14 +18,30 @@ class Game extends React.Component {
       player1 : this.props.players.player1,
       player2 : this.props.players.player2,
     }
-    this.rollDice = <RollDice func={this.rollHandler.bind(this)}/>
-    // RollDice.roll();
+    this.rollDice = <RollDice 
+    func={this.rollHandler.bind(this)}
+    ref={this.child} 
+    computerTurn={this.state[this.state.currentPlayer].name === 'Computer'}/>
   }
-  // computerPlay(){
-  //   while (true){
-
-  //   }
-  // }
+  componentDidUpdate(){
+    console.log(this.state);
+    if (this.state.player2.name === 'Computer' && 
+    this.state.currentPlayer === 'player2'){
+      if ((this.state.player2.currentScore +
+        this.state.player2.totalScore) < 
+        this.winningScore){
+          this.computerTurn();
+        } else if(!this.state.gameEnd){
+          this.holdHandler();
+        }  
+    }
+  }
+  computerTurn(){
+    console.log('---computerTurn---');
+    setTimeout(() => {
+      this.child.current.roll();
+    }, 1500);
+  }
   switchPlayer(){
     const prev = this.state;
     this.setState({
@@ -75,16 +92,16 @@ class Game extends React.Component {
     }
   }
   holdHandler(){
-    console.log(this.rollDice);
-    // this.rollDice.roll();
+    console.log('---holdHandler---')
     const prev = this.state;
     const currentPlayer = prev.currentPlayer;
     const anotherPlayer = prev.currentPlayer === 'player1' ? 'player2' : 'player1'
     const total = prev[currentPlayer].currentScore + prev[currentPlayer].totalScore; 
+
     // is this a winning?
     if (total >= this.winningScore){
       this.setState ({gameEnd : true});
-      console.log('game end')
+
     } else {
       this.setState({
         gameEnd : false,
@@ -99,6 +116,7 @@ class Game extends React.Component {
       });
     }
   }
+
   newGameHandler(){
     console.log('newGameHandler');
     this.setState({
@@ -119,16 +137,21 @@ class Game extends React.Component {
             winnerImg={this.state[this.state.currentPlayer].img}
             winnerName={this.state[this.state.currentPlayer].name}
             newGame={this.newGameHandler.bind(this)}
+            exit={this.props.exit}
           />)}
         <div className="game-board">
           <div className="turn">
           {this.state[this.state.currentPlayer].name} it's your turn!
           </div>
           <div className="dices">
-            {this.rollDice}
+            <RollDice 
+            func={this.rollHandler.bind(this)}
+            ref={this.child} 
+            computerTurn={this.state[this.state.currentPlayer].name === 'Computer'}/>
           </div>
           <div className="game-btns">
-            <Button txt="Hold" func={this.holdHandler.bind(this)}/>
+            {this.state[this.state.currentPlayer].name !== 'Computer' &&
+             <Button txt="Hold" func={this.holdHandler.bind(this)}/>}
           </div>
         </div>
         <div className="players">

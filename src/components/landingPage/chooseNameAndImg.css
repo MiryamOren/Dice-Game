@@ -1,0 +1,54 @@
+.choose-name-and-img {
+  height: 100%;
+  width: 90%;
+  padding: 5vh 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #5e0a12;
+}
+.choose-name-and-img_name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.choose-name-and-img label {
+  font-size: 1.5rem;
+}
+.choose-name-and-img input {
+  width: 60%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.664);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  padding: 0.7rem 2rem;
+  text-align: center;
+  color: #5e0a12;
+}
+.choose-name-and-img .imgs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.choose-name-and-img .imgs img {
+  width: 16%;
+  background-color: rgba(0, 0, 0, 0.37);
+  border: #fff solid 2px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.choose-name-and-img .imgs img.checked {
+  border: #5e0a12 solid 2px;
+}
+
+.choose-name-and-img button {
+  border: #5e0a12 solid 2px;
+  font-size: 1rem;
+  color: #5e0a12;
+  padding: 1rem 2.5rem;
+  background-color: transparent;
+  border-radius: 30px;
+  cursor: pointer;
+}

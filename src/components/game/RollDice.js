@@ -17,18 +17,20 @@ constructor(props){
 	this.state = { 
 	die1 : 'one', 
 	die2 : 'one', 
-	rolling: false
+	rolling: false,
+	// computerTurn : props.computerTurn,
 	} 
 	this.roll = this.roll.bind(this) 
 } 
 roll(){ 
+	console.log('---rolling---');
+	console.log(this.props.computerTurn);
 	const {sides} = this.props 
 	this.setState({ 
-	
 	// Changing state upon click 
 	die1 : sides[Math.floor(Math.random() * sides.length)], 
 	die2 : sides[Math.floor(Math.random() * sides.length)], 
-	rolling:true
+	rolling : true
 	}) 
 	
 	// Start timer of one sec when rolling start 
@@ -51,7 +53,7 @@ render(){
 		<Die face={die2} rolling={rolling}/> 
 		</div> 
 		<button className={handleBtn} 
-				disabled={this.state.rolling} 
+				disabled={this.props.computerTurn || this.state.rolling} 
 				onClick={this.roll}> 
 				{this.state.rolling ? 'Rolling' : 'Roll Dice!'} 
 		</button> 

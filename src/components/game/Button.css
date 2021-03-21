@@ -1,6 +1,6 @@
-button{
-  background-color: #4AB2E1;
-  background-color: #5E0A12;
+.game button {
+  background-color: #4ab2e1;
+  background-color: #5e0a12;
   color: #fff;
   border: none;
   border-radius: 10px;

@@ -1,35 +1,38 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-useless-constructor */
 import React from 'react';
-// import './App.css';
-import Game from './components/Game'
+import './App.css';
+import Game from './components/game/Game'
+import LandingPage from './components/landingPage/LandingPage'
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      winningScore : 30,
-      players: {
-        player1 : {
-          name : 'Player1',
-          img : 'https://cdn2.iconfinder.com/data/icons/monster-1-1/450/monster_alien_space._2-512.png',
-          currentScore : 0,
-          totalScore : 0,
-        },
-        player2 : {
-          name : 'Player2',
-          img : 'https://cdn2.iconfinder.com/data/icons/monster-1-1/450/monster_alien_space._5-512.png',
-          currentScore : 0,
-          totalScore : 0,
-        },
-      },
-    }
+    this.state = {display : 'LandingPage'};
+    this.winningScore = null;
+    this.players = {
+        player1 : {},
+        player2 : {},
+      };
+
+  }
+  getGameData(player1, player2, winningScore){
+    this.players.player1 = player1;
+    this.players.player2 = player2;
+    this.winningScore = winningScore;
+    this.setState({display : 'Game'});
   }
   render() {
     return (
+      (this.state.display === 'LandingPage' &&
+      <LandingPage func={this.getGameData.bind(this)}/>) ||
+      (this.state.display === 'Game' && 
       <Game 
-        players={this.state.players} 
-        winningScore={this.state.winningScore}
-      />
+      players={this.players} 
+      winningScore={this.winningScore}
+      />)
     )
   }
 }
+
+
 export default App;

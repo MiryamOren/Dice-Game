@@ -1,0 +1,39 @@
+.goal-score {
+  width: 90%;
+  max-width: 700px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 7vh 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #5e0a12;
+}
+.goal-score h1,
+.goal-score h2 {
+  text-align: center;
+}
+.goal-score p {
+  min-height: max-content;
+  font-size: 1.2rem;
+}
+.goal-score label {
+  text-align: center;
+  font-size: 1.3rem;
+}
+.goal-score_btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.goal-score_btns button {
+  border: #5e0a12 solid 2px;
+  font-size: 1rem;
+  color: #5e0a12;
+  padding: 1rem 2.5rem;
+  background-color: transparent;
+  border-radius: 30px;
+  cursor: pointer;
+}

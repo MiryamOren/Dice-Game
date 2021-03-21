@@ -15,7 +15,11 @@ const GameWinningScreen = (props) => {
         </div>
         <div className="winning-screen_btns"></div>
           <Button txt="New Game" func={props.newGame}/>
-          <Button txt="Exit" func={window.close}/>
+          <Button txt="Exit" func={
+            () => {
+              window.close();
+            }
+          }/>
       </div>
     </div>
   );
