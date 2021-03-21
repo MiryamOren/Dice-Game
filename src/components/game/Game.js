@@ -137,7 +137,7 @@ class Game extends React.Component {
           />)}
         <div className="game-board">
           <div className="turn">
-          {this.state[this.state.currentPlayer].name} it's your turn!
+          {this.state[this.state.currentPlayer].name} it's your turn! <br/>The goal: {this.winningScore} points
           </div>
           <div className="dices">
             <RollDice 
